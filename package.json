@@ -1,0 +1,19 @@
+{
+  "name": "myshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/vanhieuthekop/MyShop.git"
+  },
+  "author": "Van Hieu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vanhieuthekop/MyShop/issues"
+  },
+  "homepage": "https://github.com/vanhieuthekop/MyShop#readme"
+}
