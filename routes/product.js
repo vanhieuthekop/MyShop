@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
 const _ = require('lodash');
+const auth = require('../middleware/auth');
+const admin = require('../middleware/admin');
 
 router.get('/', async(req, res) => {
     const products = await Product.find().sort('name');
@@ -17,7 +19,9 @@ router.get('/:id', async(req, res) => {
     res.send(product);
 });
 
-router.post('/', async(req, res) => {
+router.post('/', auth ,async(req, res) => {
+    console.log('2', req.body);
+
     const {error} = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
@@ -41,7 +45,7 @@ router.put('/:id', async(req, res) => {
     res.send(product);
 });
 
-router.delete('/:id', async(req, res) =>{
+router.delete('/:id', [auth, admin],async(req, res) =>{
     const product = await Product.findOneAndDelete({_id: req.params.id});
 
     if (!product) return res.status(404).send('The product with given ID was not existed');
